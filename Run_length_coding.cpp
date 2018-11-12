@@ -29,12 +29,16 @@ string Encoding(string text)
 
 string Decoding(string encoded_text)
 {
-    string text;
+    string decoded_text;
 
-    for(int i=0; i < encoded_text.length(); i++)
+    for(int i=0; i < encoded_text.length(); i = i + 2)
     {
-        
+        int temp = (int) encoded_text[i+1] - 48;
+
+        decoded_text.append(temp, encoded_text[i]);
     }
+
+    return decoded_text;
 }
 
 main(int argc, char const *argv[])
@@ -48,6 +52,10 @@ main(int argc, char const *argv[])
     string encoded_text = Encoding(text);
 
     cout << "Encoded text: " << encoded_text << endl;
+
+    string decoded_text = Decoding(encoded_text);
+    
+    cout << "Decoded text: " << decoded_text << endl;
 
     return 0;
 }
