@@ -18,10 +18,37 @@ string Encoding(string text)
 
             i++;
         }
+
+        if(count > 9)
+        {
+            int result = count / 9;
+
+            int remain = count % 9;
+
+
+            for(int i = 0; i <= result; i++)
+            {
+                if( i % 2 == 0)
+                {
+                    encoded_text += '9';
+                }
+                else
+                {
+                    encoded_text += text[i];
+                }
+            }
+
+            encoded_text += (char)remain + 48;
+        }
+        
+        else
+        {
+            encoded_text += (char)count + 48;
+        }
         
         //cout << "char num : " << count << (char) count + 48 << endl;
 
-        encoded_text += (char) count + 48;
+        
     }
 
     return encoded_text;
