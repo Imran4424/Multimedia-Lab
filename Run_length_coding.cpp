@@ -26,7 +26,7 @@ string Encoding(string text)
             int remain = count % 9;
 
 
-            for(int i = 0; i <= result; i++)
+            for(int i = 0; i <= result*2; i++)
             {
                 if( i % 2 == 0)
                 {
