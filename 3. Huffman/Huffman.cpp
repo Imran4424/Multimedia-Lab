@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+map<char, string> codes;
+
 struct node
 {
     char data;
@@ -31,7 +33,7 @@ class Compare
     }
 };
 
-void PrintCodes(node *root, string line)
+void WriteCodes(node *root, string line)
 {
     if(!root)
     {
@@ -40,11 +42,11 @@ void PrintCodes(node *root, string line)
 
     if(root -> data != '#')
     {
-        cout << root -> data << " : " << line << endl;
+        codes[root -> data] = line;
     }
 
-    PrintCodes(root -> left, line + "0");
-    PrintCodes(root -> right, line + "1");
+    WriteCodes(root -> left, line + "0");
+    WriteCodes(root -> right, line + "1");
 }
 
 void Huffman(map<char, int> frequencyMap)
@@ -53,9 +55,7 @@ void Huffman(map<char, int> frequencyMap)
 
     priority_queue < node*, vector<node*>, Compare > minHeap;
 
-    map<char, int>::iterator itr;
-
-    for(itr = frequencyMap.begin(); itr != frequencyMap.end(); itr++)
+    for(auto itr = frequencyMap.begin(); itr != frequencyMap.end(); itr++)
     {
         minHeap.push(new node(itr -> first, itr -> second));
     }
@@ -77,8 +77,9 @@ void Huffman(map<char, int> frequencyMap)
     }
 
 
-    PrintCodes(minHeap.top(), "");
+    WriteCodes(minHeap.top(), "");
 }
+
 
 int main()
 {
@@ -100,6 +101,12 @@ int main()
     }
 
     Huffman(frequencyMap);
+
+
+    for(auto itr = codes.begin(); itr != codes.end(); itr++)
+    {
+        cout << itr -> first << " : " << itr -> second << endl;
+    }
 
     return 0;
 }
