@@ -124,6 +124,11 @@ void Decompress()
 			{
 				cout << "can not open the file decompress" << endl;
 			}
+
+			if (previousString.length())
+			{
+				strings[nextCode++] = previousString + strings[code][0];
+			}
 		}
 
 		readFile.close();
