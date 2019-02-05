@@ -30,8 +30,10 @@ void Compress()
 
 	if (readFile.is_open())
 	{
-		while( readFile >> noskipws >> c )
+		while( readFile >> noskipws >> c)
 		{
+			//cout << int(c) << endl;
+
 			currentString = currentString + c;
 
 			// currentString = currentString + string(1,c);
