@@ -40,6 +40,8 @@ void Compress()
 
 				currentString.erase(currentString.length() - 1);
 
+				cout << currentString << endl;
+
 				ofstream writeFile;
 
 				writeFile.open("compress.txt");
