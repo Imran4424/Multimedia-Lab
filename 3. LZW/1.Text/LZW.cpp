@@ -15,7 +15,13 @@ void compress()
 		codes[string(1, char(i))] = i;
 	}
 
-	lli next_code = 257;
+	lli nextCode = 257;
+
+	string currentString;
+
+	char c;
+
+	
 }
 
 
