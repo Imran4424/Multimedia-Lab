@@ -12,7 +12,7 @@ void Compress()
 
 	if(readFile.is_open())
 	{
-		
+		while(readFile >> skipws >> )
 	}
 }
 
