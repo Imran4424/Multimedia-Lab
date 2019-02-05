@@ -21,7 +21,18 @@ void compress()
 
 	char c;
 
-	
+	ifstream readFile;
+
+	readFile.open("plain.txt");
+
+	if (readFile.is_open())
+	{
+		
+	}
+	else
+	{
+		cout << "can not open the file: " << fileName << endl;
+	}
 }
 
 
