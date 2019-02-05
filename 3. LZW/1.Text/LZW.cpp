@@ -8,7 +8,7 @@ typedef long long int lli;
 
 void Compress()
 {
-	unordered_map < string, int > codes;
+	unordered_map < string, lli > codes;
 
 	for(lli i = 0; i < 256; i++)
 	{
@@ -83,7 +83,7 @@ void Compress()
 
 void Decompress()
 {
-	unordered_map < int, string > strings;
+	unordered_map < lli, string > strings;
 
 	for(lli i = 0; i < 256; i++)
 	{
@@ -95,7 +95,43 @@ void Decompress()
 	lli code;
 	lli nextCode = 257;
 
-	
+	ifstream readFile;
+
+	readFile.open("compress.txt");
+
+	if (readFile.open())
+	{
+
+		while( readFile >> code)
+		{
+
+			if (strings.count(lli(code)) == 0)
+			{
+				strings[code] = previousString + previousString[0];
+			}
+
+			ofstream writeFile;
+			writeFile.open("decompress.txt");
+
+			if (writeFile.open())
+			{
+
+				writeFile << strings[code];
+
+				writeFile.close();
+			}
+			else
+			{
+				cout << ""
+			}
+		}
+
+		readFile.close();
+	}
+	else
+	{
+		cout << "can not open the file compress" << endl;
+	}
 }
 
 
