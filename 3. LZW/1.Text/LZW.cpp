@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <unordered_map>
 using namespace std;
 
 typedef long long int lli;
@@ -87,7 +88,7 @@ void Decompress()
 
 	for(lli i = 0; i < 256; i++)
 	{
-		codes[i] = string(1, char(i));
+		strings[i] = string(1, char(i));
 	}
 
 	string previousString;
