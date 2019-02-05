@@ -83,6 +83,18 @@ void Compress()
 
 void Decompress()
 {
+	unordered_map < int, string > strings;
+
+	for(lli i = 0; i < 256; i++)
+	{
+		codes[i] = string(1, char(i));
+	}
+
+	string previousString;
+
+	lli code;
+	lli nextCode = 257;
+
 	
 }
 
