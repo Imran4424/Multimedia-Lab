@@ -23,11 +23,56 @@ void compress()
 
 	ifstream readFile;
 
-	readFile.open("plain.txt");
+	string fileName = "plain.txt";
+
+	readFile.open(fileName);
 
 	if (readFile.is_open())
 	{
-		
+		while( readFile >> c)
+		{
+			currentString = currentString + c;
+
+			if (codes.count(string(currentString)) == 0)
+			{
+				codes[currentString] = nextCode++;
+
+				currentString.erase(currentString.length() - 1);
+
+				ofstream writeFile;
+
+				writeFile.open("compress.txt");
+
+				if (writeFile.open())
+				{
+					writeFile << currentString;
+
+					writeFile.close();
+				}
+				else
+				{
+					cout << "can not open the file" << endl;
+				}
+
+				currentString = c;
+			}
+		}
+
+		writeFile.open("compress.txt");
+
+		if (writeFile.open())
+		{
+			writeFile << codes[currentString];
+
+			writeFile.close();
+		}
+		else
+		{
+			cout << "can not open the file" << endl;
+		}
+
+
+		readFile.close();
 	}
 	else
 	{
