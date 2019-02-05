@@ -82,7 +82,32 @@ void Huffman(map<char, int> frequencyMap)
 
 void Compress()
 {
+    char c;
 
+    ifstream readFile;
+    string fileName = "plain.txt";
+    readFile.open(fileName);
+
+    if (readFile.is_open())
+    {
+        while(readFile >> noskipws >> c)
+        {
+            if(frequencyMap.count(char(c)) == 0)
+            {
+                frequencyMap[c] = 1;
+            }
+            else
+            {
+                frequencyMap[c]++;
+            }
+        }
+
+        readFile.close();
+    }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
+    }
 }
 
 
@@ -98,20 +123,25 @@ int main()
 
     if (readFile.is_open())
     {
-        /* code */
+        while(readFile >> noskipws >> c)
+        {
+            if(frequencyMap.count(char(c)) == 0)
+            {
+                frequencyMap[c] = 1;
+            }
+            else
+            {
+                frequencyMap[c]++;
+            }
+        }
+
+        readFile.close();
+    }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
     }
 
-    for(int i=0; i < text.length(); i++)
-    {
-        if(frequencyMap.count(text[i]) == 0)
-        {
-            frequencyMap[text[i]] = 1;
-        }
-        else
-        {
-            frequencyMap[text[i]]++;
-        }
-    }
 
     Huffman(frequencyMap);
 
