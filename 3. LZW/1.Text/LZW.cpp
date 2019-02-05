@@ -6,7 +6,7 @@ using namespace std;
 
 typedef long long int lli;
 
-void compress()
+void Compress()
 {
 	unordered_map < string, int > codes;
 
@@ -78,6 +78,12 @@ void compress()
 	{
 		cout << "can not open the file: " << fileName << endl;
 	}
+}
+
+
+void Decompress()
+{
+	
 }
 
 
