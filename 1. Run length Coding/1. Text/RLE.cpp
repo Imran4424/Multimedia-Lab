@@ -4,7 +4,7 @@ using namespace std;
 
 void Compress()
 {
-	char c;
+	char c, old_c;
 
 	ifstream readFile;
 
@@ -12,7 +12,17 @@ void Compress()
 
 	if(readFile.is_open())
 	{
-		while(readFile >> skipws >> )
+		while(readFile >> skipws >> c)
+		{
+
+		}
+
+
+		readFile.close();
+	}
+	else
+	{
+		cout << "can not open the file plain.txt" << endl;
 	}
 }
 
