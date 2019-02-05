@@ -4,7 +4,7 @@ using namespace std;
 
 void Compress()
 {
-	char c, old_c;
+	char c, old_c, count = 0;
 
 	ifstream readFile;
 
