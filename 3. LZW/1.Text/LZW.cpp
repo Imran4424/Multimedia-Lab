@@ -59,6 +59,8 @@ void Compress()
 			}
 		}
 
+		ofstream writeFile;
+
 		writeFile.open("compress.txt");
 
 		if (writeFile.is_open())
