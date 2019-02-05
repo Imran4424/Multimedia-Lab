@@ -145,6 +145,9 @@ void Decompress()
 
 int main(int argc, char const *argv[])
 {
+	Compress();
+
+	Decompress();
 	
 	return 0;
 }
