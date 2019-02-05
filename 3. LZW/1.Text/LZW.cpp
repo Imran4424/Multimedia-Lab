@@ -43,7 +43,7 @@ void Compress()
 
 				writeFile.open("compress.txt");
 
-				if (writeFile.open())
+				if (writeFile.is_open())
 				{
 					writeFile << currentString;
 
@@ -60,7 +60,7 @@ void Compress()
 
 		writeFile.open("compress.txt");
 
-		if (writeFile.open())
+		if (writeFile.is_open())
 		{
 			writeFile << codes[currentString];
 
@@ -99,7 +99,7 @@ void Decompress()
 
 	readFile.open("compress.txt");
 
-	if (readFile.open())
+	if (readFile.is_open())
 	{
 
 		while( readFile >> code)
@@ -113,7 +113,7 @@ void Decompress()
 			ofstream writeFile;
 			writeFile.open("decompress.txt");
 
-			if (writeFile.open())
+			if (writeFile.is_open())
 			{
 
 				writeFile << strings[code];
