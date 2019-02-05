@@ -122,7 +122,7 @@ void Decompress()
 			}
 			else
 			{
-				cout << ""
+				cout << "can not open the file decompress" << endl;
 			}
 		}
 
