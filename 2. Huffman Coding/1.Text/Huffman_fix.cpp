@@ -192,10 +192,14 @@ int main()
     Huffman(frequencyMap);
 
 
-    for(auto itr = codes.begin(); itr != codes.end(); itr++)
+/*    for(auto itr = codes.begin(); itr != codes.end(); itr++)
     {
         cout << itr -> first << " : " << itr -> second << endl;
     }
+*/
+
+    Compress();
+    Decompress();
 
     return 0;
 }
