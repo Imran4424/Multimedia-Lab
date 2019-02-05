@@ -6,6 +6,7 @@
 using namespace std;
 
 map<char, string> codes;
+map<string, char> characters;
 
 struct node
 {
@@ -43,6 +44,8 @@ void WriteCodes(node *root, string line)
     if(root -> data != '#')
     {
         codes[root -> data] = line;
+
+        characters[line] = root -> data;
     }
 
     WriteCodes(root -> left, line + "0");
@@ -92,13 +95,56 @@ void Compress()
     {
         while(readFile >> noskipws >> c)
         {
-            if(frequencyMap.count(char(c)) == 0)
+            ofstream writeFile;
+
+            writeFile.open("compress.txt", ios::app);
+
+            if (writeFile.is_open())
             {
-                frequencyMap[c] = 1;
+                writeFile << codes[c] << endl;
+
+                writeFile.close();
             }
             else
             {
-                frequencyMap[c]++;
+                cout << "can not open the file" << endl;
+            }
+        }
+
+        readFile.close();
+    }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
+    }
+}
+
+
+void Decompress()
+{
+    int code;
+
+    ifstream readFile;
+    string fileName = "compress.txt";
+    readFile.open(fileName);
+
+    if (readFile.is_open())
+    {
+        while(readFile >> code)
+        {
+            ofstream writeFile;
+
+            writeFile.open("decompress.txt", ios::app);
+
+            if (writeFile.is_open())
+            {
+                writeFile << characters[code];
+
+                writeFile.close();
+            }
+            else
+            {
+                cout << "can not open the file" << endl;
             }
         }
 
