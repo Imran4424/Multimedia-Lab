@@ -3,7 +3,10 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <fstream>
+#include <sstream>
 using namespace std;
+
 
 map<char, string> codes;
 map<string, char> characters;
@@ -43,6 +46,13 @@ void WriteCodes(node *root, string line)
 
     if(root -> data != '#')
     {
+        // int code;
+        // stringstream convert;
+
+        // convert << line;
+
+        // convert >> code;
+
         codes[root -> data] = line;
 
         characters[line] = root -> data;
@@ -122,7 +132,7 @@ void Compress()
 
 void Decompress()
 {
-    int code;
+    string code;
 
     ifstream readFile;
     string fileName = "compress.txt";
@@ -192,14 +202,8 @@ int main()
     Huffman(frequencyMap);
 
 
-/*    for(auto itr = codes.begin(); itr != codes.end(); itr++)
-    {
-        cout << itr -> first << " : " << itr -> second << endl;
-    }
-*/
-
     Compress();
-    Decompress();
+    Decompress();   
 
     return 0;
 }

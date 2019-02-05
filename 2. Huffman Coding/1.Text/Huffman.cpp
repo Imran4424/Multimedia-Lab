@@ -3,9 +3,11 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <fstream>
 using namespace std;
 
 map<char, string> codes;
+map<string, char> characters;
 
 struct node
 {
@@ -43,6 +45,8 @@ void WriteCodes(node *root, string line)
     if(root -> data != '#')
     {
         codes[root -> data] = line;
+
+        characters[line] = root -> data;
     }
 
     WriteCodes(root -> left, line + "0");
@@ -80,33 +84,123 @@ void Huffman(map<char, int> frequencyMap)
     WriteCodes(minHeap.top(), "");
 }
 
+void Compress()
+{
+    char c;
+
+    ifstream readFile;
+    string fileName = "plain.txt";
+    readFile.open(fileName);
+
+    if (readFile.is_open())
+    {
+        while(readFile >> noskipws >> c)
+        {
+            ofstream writeFile;
+
+            writeFile.open("compress.txt", ios::app);
+
+            if (writeFile.is_open())
+            {
+                writeFile << codes[c] << endl;
+
+                writeFile.close();
+            }
+            else
+            {
+                cout << "can not open the file" << endl;
+            }
+        }
+
+        readFile.close();
+    }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
+    }
+}
+
+
+void Decompress()
+{
+    string code;
+
+    ifstream readFile;
+    string fileName = "compress.txt";
+    readFile.open(fileName);
+
+    if (readFile.is_open())
+    {
+        while(readFile >> code)
+        {
+            ofstream writeFile;
+
+            writeFile.open("decompress.txt", ios::app);
+
+            if (writeFile.is_open())
+            {
+                writeFile << characters[code];
+
+                writeFile.close();
+            }
+            else
+            {
+                cout << "can not open the file" << endl;
+            }
+        }
+
+        readFile.close();
+    }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
+    }
+}
+
 
 int main()
 {
-    string text;
-    getline(cin, text);
-
     map<char, int> frequencyMap;
 
-    for(int i=0; i < text.length(); i++)
+    char c;
+
+    ifstream readFile;
+    string fileName = "plain.txt";
+    readFile.open(fileName);
+
+    if (readFile.is_open())
     {
-        if(frequencyMap.count(text[i]) == 0)
+        while(readFile >> noskipws >> c)
         {
-            frequencyMap[text[i]] = 1;
+            if(frequencyMap.count(char(c)) == 0)
+            {
+                frequencyMap[c] = 1;
+            }
+            else
+            {
+                frequencyMap[c]++;
+            }
         }
-        else
-        {
-            frequencyMap[text[i]]++;
-        }
+
+        readFile.close();
     }
+    else
+    {
+        cout << "can not open the file: " << fileName << endl;
+    }
+
 
     Huffman(frequencyMap);
 
 
-    for(auto itr = codes.begin(); itr != codes.end(); itr++)
+/*    for(auto itr = codes.begin(); itr != codes.end(); itr++)
     {
         cout << itr -> first << " : " << itr -> second << endl;
     }
+*/
+
+    Compress();
+    Decompress();   
 
     return 0;
 }
