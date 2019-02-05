@@ -48,7 +48,7 @@ void Compress()
 
 				if (writeFile.is_open())
 				{
-					writeFile << code[currentString];
+					writeFile << codes[currentString] << endl;
 
 					writeFile.close();
 				}
@@ -67,7 +67,7 @@ void Compress()
 
 		if (writeFile.is_open())
 		{
-			writeFile << codes[currentString];
+			writeFile << codes[currentString] << endl;
 
 			writeFile.close();
 		}
