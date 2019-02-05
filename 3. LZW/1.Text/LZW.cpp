@@ -14,6 +14,8 @@ void Compress()
 	for(lli i = 0; i < 256; i++)
 	{
 		codes[string(1, char(i))] = i;
+
+		//cout << string(1, char(i)) << endl;
 	}
 
 	lli nextCode = 257;
@@ -40,11 +42,9 @@ void Compress()
 
 				currentString.erase(currentString.length() - 1);
 
-				cout << currentString << endl;
-
 				ofstream writeFile;
 
-				writeFile.open("compress.txt");
+				writeFile.open("compress.txt", ios::app);
 
 				if (writeFile.is_open())
 				{
@@ -63,7 +63,7 @@ void Compress()
 
 		ofstream writeFile;
 
-		writeFile.open("compress.txt");
+		writeFile.open("compress.txt", ios::app);
 
 		if (writeFile.is_open())
 		{
@@ -116,7 +116,7 @@ void Decompress()
 			}
 
 			ofstream writeFile;
-			writeFile.open("decompress.txt");
+			writeFile.open("decompress.txt", ios::app);
 
 			if (writeFile.is_open())
 			{
