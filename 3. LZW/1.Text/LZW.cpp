@@ -129,6 +129,8 @@ void Decompress()
 			{
 				strings[nextCode++] = previousString + strings[code][0];
 			}
+
+			previousString = strings[code];
 		}
 
 		readFile.close();
