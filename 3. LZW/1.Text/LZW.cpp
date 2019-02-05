@@ -32,6 +32,8 @@ void Compress()
 	{
 		while( readFile >> noskipws >> c )
 		{
+			//cout << int(c) << endl;
+
 			currentString = currentString + c;
 
 			// currentString = currentString + string(1,c);
@@ -50,7 +52,7 @@ void Compress()
 				{
 					writeFile << codes[currentString] << endl;
 
-					cout << currentString << endl;
+					//cout << currentString << endl;
 
 					writeFile.close();
 				}
