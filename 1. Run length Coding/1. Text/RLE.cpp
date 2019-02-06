@@ -15,6 +15,12 @@ void Compress()
 		while(readFile >> skipws >> c)
 		{
 
+			old_c = c;
+
+			while(readFile >> skipws >> c && old_c == c)
+			{
+				
+			}
 		}
 
 
