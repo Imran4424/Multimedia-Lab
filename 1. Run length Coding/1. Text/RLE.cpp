@@ -17,12 +17,27 @@ void Compress()
 
 			old_c = c;
 
+			count = 1;
+
 			while(readFile >> skipws >> c && old_c == c)
 			{
-				
+				count++;
 			}
-		}
 
+			if (writeFile.is_open())
+			{
+				writeFile << old_c << " " << count << endl;
+
+				//cout << currentString << endl;
+
+				writeFile.close();
+			}
+			else
+			{
+				cout << "can not open the file" << endl;
+			}
+
+		}
 
 		readFile.close();
 	}
