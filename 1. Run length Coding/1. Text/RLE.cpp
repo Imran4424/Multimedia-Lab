@@ -4,7 +4,8 @@ using namespace std;
 
 void Compress()
 {
-	char c, old_c, count = 0;
+	char c, old_c;
+	int count = 0;
 
 	ifstream readFile;
 
@@ -13,17 +14,16 @@ void Compress()
 	if(readFile.is_open())
 	{
 		
-		readFile >> skipws >> c;
+		readFile >> noskipws >> c;
 
 		while(readFile)
 		{
-			cout << "I am here" << endl;
 
 			old_c = c;
 
 			count = 1;
 
-			while(readFile >> skipws >> c && old_c == c)
+			while(readFile >> noskipws >> c && old_c == c)
 			{
 				count++;
 			}
@@ -96,6 +96,9 @@ void Decompress()
 
 int main(int argc, char const *argv[])
 {
-	
+	Compress();
+
+	Decompress();
+
 	return 0;
 }
