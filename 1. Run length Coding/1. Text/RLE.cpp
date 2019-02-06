@@ -17,7 +17,8 @@ void Compress()
 
 		while(readFile)
 		{
-			
+			cout << "I am here" << endl;
+
 			old_c = c;
 
 			count = 1;
