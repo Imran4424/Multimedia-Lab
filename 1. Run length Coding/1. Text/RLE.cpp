@@ -12,9 +12,12 @@ void Compress()
 
 	if(readFile.is_open())
 	{
-		while(readFile >> skipws >> c)
-		{
+		
+		readFile >> skipws >> c;
 
+		while(readFile)
+		{
+			
 			old_c = c;
 
 			count = 1;
@@ -24,17 +27,60 @@ void Compress()
 				count++;
 			}
 
+			ofstream writeFile;
+
+			writeFile.open("compress.txt", ios::app);
+
 			if (writeFile.is_open())
 			{
 				writeFile << old_c << " " << count << endl;
-
-				//cout << currentString << endl;
 
 				writeFile.close();
 			}
 			else
 			{
-				cout << "can not open the file" << endl;
+				cout << "can not open the file compress.txt" << endl;
+			}
+
+		}
+		
+		readFile.close();
+	}
+	else
+	{
+		cout << "can not open the file plain.txt" << endl;
+	}
+}
+
+void Decompress()
+{
+	int asciiCode, count;
+
+	ifstream readFile;
+
+	readFile.open("compress.txt");
+
+	if (readFile.is_open())
+	{
+		while(readFile >> asciiCode >> count)
+		{
+			ofstream writeFile;
+
+			writeFile.open("decompress.txt");
+
+			if (writeFile.is_open())
+			{
+				for (int i = 0; i < count; ++i)
+				{
+					
+				}
+				
+
+				writeFile.close();
+			}
+			else
+			{
+				cout << "can not open the file decompress.txt" << endl;
 			}
 
 		}
@@ -43,7 +89,7 @@ void Compress()
 	}
 	else
 	{
-		cout << "can not open the file plain.txt" << endl;
+		cout << "can not open the file compress.txt" << endl;
 	}
 }
 
