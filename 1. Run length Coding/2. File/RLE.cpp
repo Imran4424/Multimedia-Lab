@@ -28,14 +28,14 @@ void Compress()
 				count++;
 			}
 
-			if (c == old_c && count == 1)
-			{
-				break;
-			}
+			// if (c == old_c && count == 1)
+			// {
+			// 	break;
+			// }
 
 			ofstream writeFile;
 
-			writeFile.open("compress2.txt", ios::app);
+			writeFile.open("compress.txt", ios::app);
 
 			if (writeFile.is_open())
 			{
@@ -65,7 +65,7 @@ void Decompress()
 
 	ifstream readFile;
 
-	readFile.open("compress2.txt");
+	readFile.open("compress.txt");
 
 	if (readFile.is_open())
 	{
