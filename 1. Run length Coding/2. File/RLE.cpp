@@ -9,7 +9,7 @@ void Compress()
 
 	ifstream readFile;
 
-	readFile.open("plain.txt");
+	readFile.open("smallPlain.txt");
 
 	if(readFile.is_open())
 	{
