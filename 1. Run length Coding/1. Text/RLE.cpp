@@ -66,13 +66,13 @@ void Decompress()
 		{
 			ofstream writeFile;
 
-			writeFile.open("decompress.txt");
+			writeFile.open("decompress.txt", ios::app);
 
 			if (writeFile.is_open())
 			{
 				for (int i = 0; i < count; ++i)
 				{
-					
+					writeFile << char(asciiCode);
 				}
 				
 
