@@ -28,10 +28,10 @@ void Compress()
 				count++;
 			}
 
-			// if (c == old_c && count == 1)
-			// {
-			// 	break;
-			// }
+			if (c == old_c && count == 1)
+			{
+				break;
+			}
 
 			ofstream writeFile;
 
