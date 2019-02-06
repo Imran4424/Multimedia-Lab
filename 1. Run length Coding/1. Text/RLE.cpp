@@ -16,21 +16,29 @@ void Compress()
 		
 		readFile >> noskipws >> c;
 
-		while(readFile)
+		while(true)
 		{
 
 			old_c = c;
 
 			count = 1;
 
-			while(readFile >> noskipws >> c && old_c == c)
+			while(readFile >> noskipws >> c)
 			{
-				count++;
+				if(old_c == c)
+				{
+					count++;
+				}
+				else
+				{
+					break;
+				}
+				
 			}
 
 			ofstream writeFile;
 
-			writeFile.open("compress.txt", ios::app);
+			writeFile.open("compress2.txt", ios::app);
 
 			if (writeFile.is_open())
 			{
@@ -41,6 +49,11 @@ void Compress()
 			else
 			{
 				cout << "can not open the file compress.txt" << endl;
+			}
+
+			if (readFile.eof())
+			{
+				break;
 			}
 
 		}
@@ -59,7 +72,7 @@ void Decompress()
 
 	ifstream readFile;
 
-	readFile.open("compress.txt");
+	readFile.open("compress2.txt");
 
 	if (readFile.is_open())
 	{
